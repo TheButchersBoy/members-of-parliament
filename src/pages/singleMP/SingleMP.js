@@ -1,13 +1,14 @@
 import React, { Component } from "react";
-import temp from "../../assets/temp.png";
-import ".//styles.css";
+import Face from "../../common/Face/Face";
+import tempImage from '../../assets/temp.png'
+import "./styles.css";
 
 class SingleMP extends Component {
   render() {
     return (
       <div>
+        <Face source={tempImage}/>
         <div className="SizeTitle">
-          <img src={temp} className="CircularImage" />
           <div className="MpHeadings">
             <h2>John Smith</h2>
             <p>Labour party</p>
