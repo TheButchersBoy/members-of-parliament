@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import temp from "../../assets/temp.png";
-
-import "../../assets/stylesheets/MpImages.css";
+import ".//styles.css";
 
 class SingleMP extends Component {
   render() {
