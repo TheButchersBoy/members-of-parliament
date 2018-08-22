@@ -1,0 +1,34 @@
+.CircularImage {
+  width: 10%;
+  border: 2px solid black;
+  border-radius: 50%;
+
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+.MpHeadings {
+  text-align: center;
+}
+.SizeTitle {
+  margin-top: 2%;
+}
+.MpValues {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  margin-left: 30%;
+  margin-right: 20%;
+  width: 70%;
+  display: block;
+  width: 100%;
+}
+th {
+  border: 1px solid #ddd;
+  width: 33%;
+  padding: 8px;
+  padding-top: 12px;
+  text-align: center;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: grey;
+  color: white;
+}
