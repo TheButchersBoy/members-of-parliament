@@ -22,7 +22,6 @@ npm run build
 4.THe website should be mobile and tablet friendly.
 5.We plan to organizie the data in a way that clients can peform search on the data
 
-
 ## Database
 1. Identify the objects that would be used together and combine them in one collection.
 2. Separate data that can be referred to from multiple places into its own collection.
