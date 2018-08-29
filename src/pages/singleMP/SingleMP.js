@@ -8,13 +8,13 @@ class SingleMP extends Component {
     return (
       <div>
         <Face source={tempImage}/>
-        <div className="SizeTitle">
-          <div className="MpHeadings">
+        <div className="sizeTitle">
+          <div className="mpHeadings">
             <h2>John Smith</h2>
             <p>Labour party</p>
           </div>
         </div>
-        <div className="MpValues">
+        <div className="mpValues">
           <table>
             <tr>
               <th>Issues he cares about</th>

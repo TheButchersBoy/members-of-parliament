@@ -1,4 +1,4 @@
-.CircularImage {
+.circularImage {
   width: 10%;
   border: 2px solid #aaaaab;
   border-radius: 50%;
@@ -7,13 +7,13 @@
   margin-right: auto;
   display: block;
 }
-.MpHeadings {
+.mpHeadings {
   text-align: center;
 }
-.SizeTitle {
+.sizeTitle {
   margin-top: 2%;
 }
-.MpValues {
+.mpValues {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   margin-left: 30%;
   margin-right: 20%;
