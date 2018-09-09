@@ -8,6 +8,9 @@ A politically centered educational website aimed at making Australian Federal MP
 ```
 npm install
 npm start
+
+yarn server
+yarn client
 ```
 
 *Build*

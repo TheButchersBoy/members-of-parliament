@@ -1,41 +1,63 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import Postcode from "./pages/postcode/Postcode";
+import Lab from "./pages/postcode/Lab";
 import SingleMP from "./pages/singleMP/SingleMP";
 import Footer from "./common/Footer/Footer";
+import { withRouter } from 'react-router-dom';
+
 
 class App extends Component {
+  state = {
+    count: null
+   };
+
+  componentDidMount() {
+    this.callApi()
+      .then(res => this.setState({ count: res.express }))
+      .catch(function(err){
+        console.log(err)
+      })
+  }  
+
+  incrementCount() {
+    this.postApi()
+      .then(res => this.setState({ count: res.express }))
+      .catch(function(err){
+        console.log(err)
+      })
+  }
+
+  callApi = async () => {
+    const response = await fetch('/api/getCount');
+    const body = await response.json();
+    if (response.status !== 200) {
+      throw Error(body.message);
+    } 
+    return body;
+  };
+
+  postApi = async () => {
+    const response = await fetch('/api/updateCount', {
+      method: 'POST',
+    });
+    const body = await response.json();
+    if (response.status !== 200) {
+      throw Error(body.message);
+    } 
+    return body;
+  };
+
   render() {
-
-    const NoMatch = ({ location }) => (
-      <div>
-        <h3>
-          No match for <code>{location.pathname}</code>
-        </h3>
-      </div>
-    );
-
     return (
       <div>
-        <Router>
-          <div>
-            <ul>
-              <li>
-                <Link to="/">Postcode</Link>
-              </li>
-              <li>
-                <Link to="/singleMP">SingleMP</Link>
-              </li>
-            </ul>
-            <hr />
-
-            <Switch>
-              <Route path="/" exact component={Postcode} />
-              <Route path="/singleMP" component={SingleMP} />
-              <Route component={NoMatch} />
-            </Switch>
-          </div>
-        </Router>
+        <div>
+          <button
+            type="button" onClick={() => this.incrementCount()}> Increment
+          </button>
+        </div>
+        <div>
+          <h1>{this.state.count}</h1>
+        </div>
         <Footer />
       </div>
     );
