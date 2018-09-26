@@ -16,7 +16,8 @@ class App extends Component {
     );
 
     return (
-      <div>
+      <div style={{backgroundColor: '#ff0'}}>
+        <h1 style={{textAlign: 'center'}}>Week 9</h1>
         <Router>
           <div>
             <ul>
