@@ -5,7 +5,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="standard-page">
-        <div className="dark-overlay landing-inner text-light">
+        <div className="landing-inner text-dark">
           <div className="container">
             <div className="row">
               <div className="col-md-12 text-center">

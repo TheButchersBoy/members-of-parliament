@@ -23,19 +23,7 @@ class Navbar extends Component {
               <li className="nav-item">
                 <Link className="nav-link" to="/dashboard">
                   {" "}
-                  Dashboard
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/">
-                  {" "}
-                  My MP
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/">
-                  {" "}
-                  Issues
+                  **Add Search Bar**
                 </Link>
               </li>
             </ul>
@@ -47,18 +35,18 @@ class Navbar extends Component {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/register">
-                  Sign Up
+                <Link className="nav-link" to="/myMP">
+                  My MP
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/register">
-                  Sign Up
+                <Link className="nav-link" to="/issues">
+                  Issues
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/register">
-                  Sign Up
+                <Link className="nav-link" to="/forum">
+                  Forum
                 </Link>
               </li>
 
