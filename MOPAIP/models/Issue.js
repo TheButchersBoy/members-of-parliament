@@ -4,11 +4,11 @@ const Schema = mongoose.Schema;
 // Create Schema
 const IssueSchema = new Schema({
   id: {
-    type: int,
+    type: Number,
     required: true
   },
   topicId: {
-    type: int,
+    type: Number,
     required: true
   }
   title: {
@@ -22,7 +22,7 @@ const IssueSchema = new Schema({
   votesFor: [
     {
       mpId: {
-        type: int,
+        type: Number,
         required: true
       }
     }
@@ -30,7 +30,7 @@ const IssueSchema = new Schema({
   votesAgainst: [
     {
       mpId: {
-        type: int,
+        type: Number,
         required: true
       }
     }

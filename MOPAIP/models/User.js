@@ -25,7 +25,7 @@ const UserSchema = new Schema({
   preferences: [
     {
       topicId: {
-        type: int,
+        type: Number,
         required: true
       },
     }

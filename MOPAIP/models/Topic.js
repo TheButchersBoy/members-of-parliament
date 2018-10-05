@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 // Create Schema
 const TopicSchema = new Schema({
   id: {
-    type: int,
+    type: Number,
     required: true
   },
   title: {
