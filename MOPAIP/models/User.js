@@ -21,7 +21,15 @@ const UserSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
-  }
+  },
+  preferences: [
+    {
+      topicId: {
+        type: int,
+        required: true
+      },
+    }
+  ]
 });
 
 module.exports = User = mongoose.model('users', UserSchema);
