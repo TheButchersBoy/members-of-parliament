@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Landing from "./components/pages/Landing";
 import Dashboard from "./components/pages/Dashboard";
@@ -16,20 +16,33 @@ import "./App.css";
 
 class App extends Component {
   render() {
+
+    const NoMatch = ({ location }) => (
+      <div>
+        <h3>
+          No match for <code>{location.pathname}</code>
+        </h3>
+      </div>
+    );
+
     return (
       <Router>
         <div className="App">
           <Navbar />
-          <Route exact path="/" component={Landing} />
-          <Route exact path="/dashboard" component={Dashboard} />
-
+          <Switch>
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/dashboard" component={Dashboard} />
+          </Switch>
           <div className="container">
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/myMP" component={MyMP} />
-            <Route exact path="/issues" component={Issues} />
-            <Route exact path="/profile" component={Profile} />
-            <Route exact path="/forum" component={Forum} />
+            <Switch>
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/myMP/:postcode" component={MyMP} />
+              <Route exact path="/issues" component={Issues} />
+              <Route exact path="/profile" component={Profile} />
+              <Route exact path="/forum" component={Forum} />
+              <Route component={NoMatch} />
+            </Switch>
           </div>
           <Footer />
         </div>

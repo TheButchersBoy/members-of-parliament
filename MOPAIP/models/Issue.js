@@ -7,8 +7,8 @@ const IssueSchema = new Schema({
     type: Number,
     required: true
   },
-  topicId: {
-    type: Number,
+  topic: {
+    type: String,
     required: true
   }
   title: {

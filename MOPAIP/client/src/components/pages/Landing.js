@@ -1,8 +1,22 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 class Landing extends Component {
-  render() {
+
+  state = { 
+    postcode: '' 
+  };
+
+  onChange = e => this.setState({ postcode: e.target.value });
+
+  render() {        
+    const SubmitButton = withRouter(({ history }) => (
+        <button
+          onClick={() => history.push(`myMp/${this.state.postcode}`)} 
+          className='btn-lg btn-primary' type="submit" > Go
+        </button>
+    ));
+
     return (
       <div className="landing">
         <div className="dark-overlay landing-inner text-light">
@@ -15,14 +29,16 @@ class Landing extends Component {
                   Create a profile, to know more about your leaders
                 </p>
                 <hr />
-                <Link to="/register" className="btn btn-lg btn-info mr-2">
-                  Sign Up
-                </Link>
-                <Link to="/login" className="btn btn-lg btn-light">
-                  Login
-                </Link>
               </div>
             </div>
+            <form className='col-md-10 offset-md-1'>
+              <div class="input-group">
+                <input onChange={this.onChange} value={this.state.postcode} className="form-control form-control-lg" placeholder='Postcode' type="text" />
+                <span className="input-group-btn">
+                  <SubmitButton/>
+                </span>
+              </div>
+            </form>
           </div>
         </div>
       </div>

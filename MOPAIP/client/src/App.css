@@ -46,3 +46,11 @@ img {
   margin-top: -24px;
   margin-bottom: -50px;
 }
+
+/* Shared components */
+
+/*Mp Face*/
+.mp-face {
+  border-radius: 50%;
+  max-width: 200px;
+}
