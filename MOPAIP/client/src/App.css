@@ -54,3 +54,8 @@ img {
   border-radius: 50%;
   max-width: 200px;
 }
+
+/*Topic*/
+.topicContainer {
+  outline: 1px dashed gray;
+}

@@ -19,7 +19,7 @@ router.get('/getData', (req, res) => {
 
 
   const mpData = {
-    id: '0',
+    id: 0,
     name: 'Tony',
     party: 'Liberal'
   }  

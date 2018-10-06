@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import MpFace from "../shared/MpFace";
+import Topic from "../shared/Topic";
 import axios from 'axios';
 
 class MyMP extends Component {
@@ -13,11 +14,9 @@ class MyMP extends Component {
   componentDidMount() {
     this.getMpData()
       .then(data => {
-        debugger;
-        this.setState({data: data.data});
+        this.setState({data: data});
       })
       .catch(function(err){
-        debugger;
         console.log('Cannot retrieve MP data.')
       })
   }  
@@ -29,7 +28,7 @@ class MyMP extends Component {
 
   getMpName() {
     if (this.state.data) {
-      return this.state.data.mp.name;
+      return this.state.data.mpData.name;
     }
   }  
 
@@ -37,32 +36,36 @@ class MyMP extends Component {
     return issue.votesFor.includes(issue.id) || issue.votesAgainst.includes(issue.id);
   }
 
-  votedFor(issue) {
-    return issue.votesFor.includes(issue.id);
+  renderVote(issue) {
+    return issue.votesFor.includes(this.state.data.mpData.id) 
+      ? <p style={{fontWeight: 'bold', color: 'green'}}>for</p>
+      : <p style={{fontWeight: 'bold', color: 'red'}}>against</p>
   }
 
-  getIssues() { // TODO: make seperate component
+  getIssues() { // TODO: make more seperate components
     if (this.state.data) {
-      return this.state.data.issues.map((issue, i) => { 
-        
-
-        // if (this.hasVote(issue)) {
-        //   return (
-
-        //     <div key={i}>
-        //       <p>{issue.title}</p>
-        //       {this.votedFor(issue) 
-        //         ? <p>for</p>
-        //         : <p>against</p>
-        //       }
-        //     </div>
-
-        //   );
-        // }
-      })
+      var topics = [];
+      for(var key in this.state.data.topicsAndIssues) {
+        var issues = [];
+        this.state.data.topicsAndIssues[key].map((issue, i) => { 
+          if (this.hasVote(issue)) {
+            issues.push(
+              <div key={i}>
+                <p>{issue.title}</p>
+                {this.renderVote(issue)}
+              </div>
+            )
+          }
+        });
+        topics.push(
+          <Topic title={key} className="col-lg-4 col-md-6">
+            {issues}
+          </Topic>
+        );
+      }
+      return topics;
     }
   }
-
 
   render() {
     return (
@@ -74,17 +77,8 @@ class MyMP extends Component {
             <br />
             <div className="container-fluid bg-3 text-center">    
               <div className="row">
-                {this.getIssues()}
                 <h3></h3>
-                <div className="col-md-4 col-sm-6">
-                  <img src="https://placehold.it/150x80?text=IMAGE" className="img-responsive" style={{width: "100%"}} alt="Image" />
-                </div>
-                <div className="col-md-4 col-sm-6"> 
-                  <img src="https://placehold.it/150x80?text=IMAGE" className="img-responsive" style={{width: "100%"}} alt="Image" />
-                </div>
-                <div className="col-md-4 col-sm-6"> 
-                  <img src="https://placehold.it/150x80?text=IMAGE" className="img-responsive" style={{width: "100%"}} alt="Image" />
-                </div>
+                {this.getIssues()}
               </div>
             </div>
           </div>
