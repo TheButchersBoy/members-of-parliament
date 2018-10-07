@@ -50,9 +50,9 @@ class MyMP extends Component {
         this.state.data.topicsAndIssues[key].map((issue, i) => { 
           if (this.hasVote(issue)) {
             issues.push(
-              <div key={`${key}-${i}`} className='row'>
+              <div key={issue.id} className='row'>
                 <div className="col-sm-9 text-left">
-                  <p>{issue.title}</p>
+                  <Link to={`/issues/${key}/${issue.id}/${issue.title}`} className="topic-button">{issue.title}</Link>
                 </div>
                 <div className="col-sm-3 text-left">
                   {this.renderVote(issue)}
@@ -73,18 +73,18 @@ class MyMP extends Component {
 
   render() {
     return (
-        <div className="row">
-          <div className="col-md-12 text-center">
-            <MpFace src=""/>
-            <h3>{this.getMpName()}</h3>
-            <br />
-            <div className="container-fluid bg-3 text-center">    
-              <div className="row">
-                {this.getIssues()}
-              </div>
+      <div className="row">
+        <div className="col-md-12 text-center">
+          <MpFace src=""/>
+          <h3>{this.getMpName()}</h3>
+          <br />
+          <div className="container-fluid bg-3 text-center">    
+            <div className="row">
+              {this.getIssues()}
             </div>
           </div>
         </div>
+      </div>
     );
   }
 }

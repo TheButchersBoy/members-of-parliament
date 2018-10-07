@@ -5,6 +5,7 @@ import Landing from "./components/pages/Landing";
 import Dashboard from "./components/pages/Dashboard";
 import MyMP from "./components/pages/MyMP";
 import Issues from "./components/pages/Issues";
+import Issue from "./components/pages/Issue";
 import Forum from "./components/pages/Forum";
 import Register from "./components/pages/Register";
 import Login from "./components/pages/Login";
@@ -39,6 +40,7 @@ class App extends Component {
               <Route exact path="/login" component={Login} />
               <Route exact path="/myMP/:postcode" component={MyMP} />
               <Route exact path="/issues" component={Issues} />
+              <Route exact path="/issues/:topic/:issueId/:issueTitle" component={Issue} />
               <Route exact path="/profile" component={Profile} />
               <Route exact path="/forum" component={Forum} />
               <Route component={NoMatch} />

@@ -18,6 +18,10 @@ const IssueSchema = new Schema({
   description: {
     type: String,
     required: true
+  },  
+  billUrl: {
+    type: String,
+    required: true
   },
   votesFor: [
     {

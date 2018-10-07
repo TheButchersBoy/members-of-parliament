@@ -49,13 +49,18 @@ img {
 
 /* Shared components */
 
-/*Mp Face*/
+/* Mp Face */
 .mp-face {
   border-radius: 50%;
   max-width: 200px;
 }
 
-/*Topic*/
-.topicContainer {
+/* Topic */
+.topic-container {
   outline: 1px dashed gray;
+}
+
+/* TODO: style this */
+.topic-button {
+
 }
