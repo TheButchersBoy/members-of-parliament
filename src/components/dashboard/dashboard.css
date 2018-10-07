@@ -1,0 +1,13 @@
+.button {
+  width: auto;
+  height: auto;
+}
+.blackButton {
+  background-color: grey;
+  color: white;
+}
+
+.whiteButton {
+  background-color: yellow;
+  color: white;
+}

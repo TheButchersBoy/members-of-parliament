@@ -1,44 +1,66 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import Postcode from "./pages/postcode/Postcode";
-import SingleMP from "./pages/singleMP/SingleMP";
-import Footer from "./common/Footer/Footer";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import jwt_decode from "jwt-decode";
+import setAuthToken from "./utils/setAuthToken";
+import { setCurrentUser, logoutUser } from "./actions/authActions";
+import Post from "./components/post/Post";
+import { Provider } from "react-redux";
+import store from "./store";
+import Posts from "./components/posts/Posts";
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
+import Landing from "./components/layout/Landing";
+import Register from "./components/auth/Register";
+import Login from "./components/auth/Login";
+import Dashboard from "./components/dashboard/Dashboard";
+import "./App.css";
+import { clearCurrentProfile } from "./actions/profileActions";
+import PrivateRoute from "./components/common/PrivateRoute";
+// Check for token
+if (localStorage.jwtToken) {
+  // Set auth token header auth
+  setAuthToken(localStorage.jwtToken);
+  // Decode token and get user info and exp
+  const decoded = jwt_decode(localStorage.jwtToken);
+  // Set user and isAuthenticated
+  store.dispatch(setCurrentUser(decoded));
+
+  // Check for expired token
+  const currentTime = Date.now() / 1000;
+  if (decoded.exp < currentTime) {
+    // Logout user
+    store.dispatch(logoutUser());
+    store.dispatch(clearCurrentProfile);
+    // Redirect to login
+    window.location.href = "/login";
+  }
+}
 
 class App extends Component {
   render() {
-
-    const NoMatch = ({ location }) => (
-      <div>
-        <h3>
-          No match for <code>{location.pathname}</code>
-        </h3>
-      </div>
-    );
-
     return (
-      <div style={{backgroundColor: '#ff0'}}>
-        <h1 style={{textAlign: 'center'}}>Week 9</h1>
+      <Provider store={store}>
         <Router>
-          <div>
-            <ul>
-              <li>
-                <Link to="/">Postcode</Link>
-              </li>
-              <li>
-                <Link to="/singleMP">SingleMP</Link>
-              </li>
-            </ul>
-            <hr />
-
-            <Switch>
-              <Route path="/" exact component={Postcode} />
-              <Route path="/singleMP" component={SingleMP} />
-              <Route component={NoMatch} />
-            </Switch>
+          <div className="App">
+            <Navbar />
+            <Route exact path="/" component={Landing} />
+            <div className="container">
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
+              <Switch>
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/post/:id" component={Post} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/feed" component={Posts} />
+              </Switch>
+            </div>
+            <Footer />
           </div>
         </Router>
-        <Footer />
-      </div>
+      </Provider>
     );
   }
 }
