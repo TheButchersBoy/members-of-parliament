@@ -50,15 +50,19 @@ class MyMP extends Component {
         this.state.data.topicsAndIssues[key].map((issue, i) => { 
           if (this.hasVote(issue)) {
             issues.push(
-              <div key={i}>
-                <p>{issue.title}</p>
-                {this.renderVote(issue)}
+              <div key={`${key}-${i}`} className='row'>
+                <div className="col-sm-9 text-left">
+                  <p>{issue.title}</p>
+                </div>
+                <div className="col-sm-3 text-left">
+                  {this.renderVote(issue)}
+                </div>
               </div>
             )
           }
         });
         topics.push(
-          <Topic title={key} className="col-lg-4 col-md-6">
+          <Topic key={key} title={key} className="col-lg-4 col-md-6">
             {issues}
           </Topic>
         );
@@ -69,7 +73,6 @@ class MyMP extends Component {
 
   render() {
     return (
-      <div className="container">
         <div className="row">
           <div className="col-md-12 text-center">
             <MpFace src=""/>
@@ -77,13 +80,11 @@ class MyMP extends Component {
             <br />
             <div className="container-fluid bg-3 text-center">    
               <div className="row">
-                <h3></h3>
                 {this.getIssues()}
               </div>
             </div>
           </div>
         </div>
-      </div>
     );
   }
 }

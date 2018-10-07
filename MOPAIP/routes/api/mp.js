@@ -44,7 +44,7 @@ router.get('/getData', (req, res) => {
     {
       id: 1,
       topic: 'Health',
-      title: 'fesjfsfesfesfess',
+      title: 'Some issue about health',
       description: 'blah blah blah',
       votesFor: [
         1,
@@ -56,13 +56,31 @@ router.get('/getData', (req, res) => {
         2,
         4
       ],
-    }
+    },
+    {
+      id: 2,
+      topic: 'IT',
+      title: 'Banning library computers',
+      description: 'blah blah blah',
+      votesFor: [
+        0,
+        2,
+        4
+      ],
+      votesAgainst: [
+        1,
+        3,
+        5
+      ],
+    },
   ]
 
   // Sort issues into topics
   for (let i = 0; i < issueData.length; i++) {
     let issue = issueData[i];
-    topicsAndIssues[issue.topic] = [];
+    if (!topicsAndIssues[issue.topic]) {
+      topicsAndIssues[issue.topic] = [];
+    }
     topicsAndIssues[issue.topic].push(issue);
   }
 
