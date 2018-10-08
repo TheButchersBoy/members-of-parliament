@@ -5,11 +5,18 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import { clearCurrentProfile } from "../../actions/profileActions";
 class Navbar extends Component {
+
+  state = {
+    postcode: null
+  }
+
   onLogoutClick(e) {
     e.preventDefault();
     this.props.clearCurrentProfile();
     this.props.logoutUser();
   }
+
+  onPostcodeChange = e => this.setState({ postcode: e.target.value });
 
   render() {
     const { isAuthenticated, user } = this.props.auth;
@@ -78,9 +85,15 @@ class Navbar extends Component {
           <div className="collapse navbar-collapse" id="mobile-nav">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
-                <Link className="nav-link" to="/profiles">
-                  {" "}
-                  Member of Parliament Profiles
+                <Link className="nav-link" to="/issues">
+                  Issues
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/">
+                  <form class="input-group">
+                    <input onChange={this.onPostcodeChange} value={this.state.postcode} className="form-control" placeholder='finish this' type="text" />
+                  </form>
                 </Link>
               </li>
             </ul>
