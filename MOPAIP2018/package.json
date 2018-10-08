@@ -4,11 +4,11 @@
   "description": "Information about Member Of Parliament",
   "main": "server.js",
   "scripts": {
-    "client-install": "npm install --prefix client",
+    "clients-install": "npm install --prefix clients",
     "start": "node server.js",
     "server": "nodemon server.js",
-    "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "clients": "npm start --prefix clients",
+    "dev": "concurrently \"npm run server\" \"npm run clients\""
   },
   "author": "Shadman,Nathan,Angelica",
   "license": "MIT",
