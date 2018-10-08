@@ -21,8 +21,19 @@ class Navbar extends Component {
   render() {
     const { isAuthenticated, user } = this.props.auth;
 
+    const postcodeSearch = (
+      <li className="nav-item">
+        <Link to="/">
+          <form class="input-group">
+            <input onChange={this.onPostcodeChange} value={this.state.postcode} className="form-control" placeholder='**Finish this**' type="text" />
+          </form>
+        </Link>
+      </li>
+    );
+
     const authLinks = (
       <ul className="navbar-nav ml-auto">
+        {postcodeSearch}
         <li className="nav-item">
           <Link className="nav-link" to="/feed">
             Discussion Forum
@@ -54,6 +65,7 @@ class Navbar extends Component {
 
     const guestLinks = (
       <ul className="navbar-nav ml-auto">
+        {postcodeSearch}
         <li className="nav-item">
           <Link className="nav-link" to="/register">
             Sign Up
@@ -86,14 +98,7 @@ class Navbar extends Component {
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
                 <Link className="nav-link" to="/issues">
-                  Issues
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/">
-                  <form class="input-group">
-                    <input onChange={this.onPostcodeChange} value={this.state.postcode} className="form-control" placeholder='finish this' type="text" />
-                  </form>
+                  All issues
                 </Link>
               </li>
             </ul>

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import MpFace from "../common/MpFace";
 import Topic from "../common/Topic";
+import AllIssues from "../common/AllIssues";
 import axios from 'axios';
 
 class MyMP extends Component {
@@ -32,58 +33,19 @@ class MyMP extends Component {
     }
   }  
 
-  hasVote(issue) {
-    return issue.votesFor.includes(issue.id) || issue.votesAgainst.includes(issue.id);
-  }
-
-  renderVote(issue) {
-    return issue.votesFor.includes(this.state.data.mpData.id) 
-      ? <p style={{fontWeight: 'bold', color: 'green'}}>for</p>
-      : <p style={{fontWeight: 'bold', color: 'red'}}>against</p>
-  }
-
-  getIssues() { // TODO: make more seperate components
-    if (this.state.data) {
-      var topics = [];
-      for(var key in this.state.data.topicsAndIssues) {
-        var issues = [];
-        this.state.data.topicsAndIssues[key].map((issue, i) => { 
-          if (this.hasVote(issue)) {
-            issues.push(
-              <div key={issue.id} className='row'>
-                <div className="col-sm-9 text-left">
-                  <Link to={`/issues/${key}/${issue.id}/${issue.title}`} className="topic-button">{issue.title}</Link>
-                </div>
-                <div className="col-sm-3 text-left">
-                  {this.renderVote(issue)}
-                </div>
-              </div>
-            )
-          }
-        });
-        topics.push(
-          <Topic key={key} title={key} className="col-lg-4 col-md-6">
-            {issues}
-          </Topic>
-        );
-      }
-      return topics;
-    }
-  }
-
   render() {
     return (
       <div className="row">
-        <div className="col-md-12 text-center">
-          <MpFace src=""/>
-          <h3>{this.getMpName()}</h3>
-          <br />
-          <div className="container-fluid bg-3 text-center">    
-            <div className="row">
-              {this.getIssues()}
+        {this.state.data ?
+          <div className="col-md-12 text-center">
+            <MpFace src=""/>
+            <h3>{this.getMpName()}</h3>
+            <br />
+            <div className="container-fluid bg-3 text-center">    
+              <AllIssues issues={this.state.data.issues} mpData={this.state.data.mpData}/>
             </div>
           </div>
-        </div>
+        : null }  
       </div>
     );
   }

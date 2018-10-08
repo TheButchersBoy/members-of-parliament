@@ -9,7 +9,7 @@ const router = express.Router();
 //router.get('/getData/:postcode', (req, res) => {
 router.get('/getData', (req, res) => {
   const postcode = req.query.postcode;
-  var topicsAndIssues = {};
+  var issues = {};
 
   // TODO
   // 1. get mp data from MP table based on Postcode
@@ -78,13 +78,13 @@ router.get('/getData', (req, res) => {
   // Sort issues into topics
   for (let i = 0; i < issueData.length; i++) {
     let issue = issueData[i];
-    if (!topicsAndIssues[issue.topic]) {
-      topicsAndIssues[issue.topic] = [];
+    if (!issues[issue.topic]) {
+      issues[issue.topic] = [];
     }
-    topicsAndIssues[issue.topic].push(issue);
+    issues[issue.topic].push(issue);
   }
 
-  res.send({mpData, topicsAndIssues});
+  res.send({mpData, issues});
 });
 
 module.exports = router;
