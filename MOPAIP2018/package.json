@@ -1,5 +1,5 @@
 {
-  "name": "MOPAIP",
+  "name": "mop",
   "version": "1.0.0",
   "description": "Information about Member Of Parliament",
   "main": "server.js",
