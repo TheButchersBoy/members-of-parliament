@@ -2,6 +2,14 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import BarChart from "../shared/BarChart";
 import axios from 'axios';
+import ReactDOM from 'react-dom';
+import {
+    Accordion,
+    AccordionItem,
+    AccordionItemTitle,
+    AccordionItemBody,
+} from 'react-accessible-accordion';
+import 'react-accessible-accordion/dist/fancy-example.css';
 
 class Issues extends Component {
 
@@ -35,20 +43,35 @@ class Issues extends Component {
 
     return (
       <div className="row">
-        <div className="col-md-12">
-          <div className="text-center mb-3">
-            <h3>{title}</h3>
+        { this.state.issueData ?
+          <div>
+            <div className="col-md-12">
+              <div className="text-center mb-3">
+                <h3>{title}</h3>
+              </div>
+              <p>{description}</p>
+              <a href={billUrl} target="_blank" className="small">{billUrl}</a>
+              {(votesFor || votesFor) ? 
+                <div className='col-md-6 col-sm-8 offset-md-3 offset-sm-2 col-lg-4 offset-lg-4'>
+                  <BarChart votesFor={votesFor} votesAgainst={votesAgainst} title={title} />
+                </div> 
+              : null}
+              <hr />
+            </div>
+            <div className="col-sm-12">
+              <Accordion>
+                <AccordionItem>
+                    <AccordionItemTitle>
+                        <h3>Ignore this for now...</h3>
+                    </AccordionItemTitle>
+                    <AccordionItemBody>
+                        <p>Body content</p>
+                    </AccordionItemBody>
+                </AccordionItem>
+              </Accordion>
+            </div>
           </div>
-          <p>{description}</p>
-          <a href={billUrl} target="_blank" className="small">{billUrl}</a>
-          {(votesFor || votesFor) ? 
-            <div className='col-md-6 col-sm-8 offset-md-3 offset-sm-2 col-lg-4 offset-lg-4'>
-              <BarChart votesFor={votesFor} votesAgainst={votesAgainst} title={title} />
-            </div> 
-          : null}
-          <hr />
-
-        </div>
+        : null }
       </div>
     );
   }
