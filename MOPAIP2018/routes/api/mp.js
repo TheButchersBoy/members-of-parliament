@@ -2,21 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const Mp = require('../../models/Mp');
-
-// router.post('/postIssue', (req, res) => {
-//   console.log("POST ISSUE!");
-//   console.log(req);
-//   const newIssue = new Issue({
-//     title: req.body.title,
-//     description: req.body.description,
-//     topic: req.body.topic,
-//     billUrl: req.body.billUrl,
-//     votesFor: req.body.votesFor,
-//     votesAgainst: req.body.votesAgainst,
-//   });
-
-//   newIssue.save().then(issue => res.json(issue));
-// });
+const Postcode = require('../../models/Postcode');
 
 // @route   GET api/mp/mps
 // @desc    Return all mps
@@ -45,13 +31,18 @@ router.get('/mp/:id', (req, res) => {
 // @desc    Return an mp with a matching Postcode
 // @access  Public
 router.get('/mp/postcode/:postcode', (req, res) => {
-  // TODO: Get corresponding postcode. If data dump doesn't work let's just add a few ourselves and only search for those MPs
-  
-  // Mp.findById(req.params.postcode)
-  //   .then(mp => res.json(mp))
-  //   .catch(err =>
-  //     res.status(404).json({ nompfound: 'No mp found with that Postcode' })
-  //   );
+  Postcode.findOne({ postcode: req.params.postcode })
+    .then(postcode => { 
+      console.log(postcode);
+      Mp.findById(postcode.mpId)
+        .then(mp => res.json(mp))
+        .catch(err =>
+          res.status(404).json({ nompfound: 'No mp found with that ID' })
+        );
+    })
+    .catch(err =>
+      res.status(404).json({ nompfound: 'No mp found with that Postcode' })
+    );
 });
 
 module.exports = router;

@@ -8,7 +8,6 @@ const Issue = require('../../models/Issue');
 // @access  Public
 //router.get('issues/issue:id', (req, res) => {
 router.get('/issue/:id', (req, res) => {  
-  console.log('**************: ' + req.params.id);
   Issue.findById(req.params.id)
     .then(issue => res.json(issue))
     .catch(err =>

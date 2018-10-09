@@ -8,7 +8,7 @@ const PostcodeSchema = new Schema({
     required: true
   },
   mpId: {
-    type: Number,
+    type: String,
     required: true
   }
 });
