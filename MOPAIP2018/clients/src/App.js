@@ -15,7 +15,8 @@ import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Dashboard from "./components/dashboard/Dashboard";
-import MyMP from "./components/mp/MyMP";
+import MyMp from "./components/myMp/MyMp";
+import Mps from "./components/mps/Mps";
 import Issues from "./components/issues/Issues";
 import Issue from "./components/issue/Issue";
 import "./App.css";
@@ -51,7 +52,8 @@ class App extends Component {
             <div className="container">
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
-              <Route exact path="/myMP/:postcode" component={MyMP} />
+              <Route exact path="/myMP/:postcode" component={MyMp} />
+              <Route exact path="/mps" component={Mps} />
               <Route exact path="/issues" component={Issues} />
               <Route exact path="/issues/:topic/:issueId/:issueTitle" component={Issue} />
               <Switch>

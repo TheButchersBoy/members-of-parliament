@@ -2,6 +2,71 @@ const express = require("express");
 const router = express.Router();
 
 
+// @route   GET api/mp/mps
+// @desc    Return all mps
+// @access  Public
+//router.get('/mps', (req, res) => {
+router.get('/mps', (req, res) => {
+
+  console.log('ininin');
+
+  // Mock data
+  const mps = [
+    {
+      id: 0,
+      name: 'Tony',
+      party: 'Liberal'
+    },
+    {
+      id: 1,
+      name: 'Tony',
+      party: 'Labour'
+    },
+    {
+      id: 2,
+      name: 'Tony',
+      party: 'Labour'
+    },
+    {
+      id: 3,
+      name: 'Tony',
+      party: 'Liberal'
+    },
+    {
+      id: 4,
+      name: 'Tony',
+      party: 'Labour'
+    },
+    {
+      id: 5,
+      name: 'Tony',
+      party: 'Liberal'
+    },
+    {
+      id: 6,
+      name: 'Tony',
+      party: 'Liberal'
+    },
+    {
+      id: 7,
+      name: 'Tony',
+      party: 'Liberal'
+    },
+    {
+      id: 8,
+      name: 'Tony',
+      party: 'Liberal'
+    },
+    {
+      id: 9,
+      name: 'Tony',
+      party: 'Labour'
+    }
+  ]; 
+
+  res.send({mps});
+});
+
 
 // @route   GET api/users/test
 // @desc    Tests users route

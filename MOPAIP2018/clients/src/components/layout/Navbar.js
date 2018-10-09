@@ -101,6 +101,11 @@ class Navbar extends Component {
                   All issues
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/mps">
+                  MPs
+                </Link>
+              </li>
             </ul>
             {isAuthenticated ? authLinks : guestLinks}
           </div>

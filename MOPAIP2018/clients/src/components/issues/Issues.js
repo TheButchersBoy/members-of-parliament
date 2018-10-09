@@ -13,11 +13,9 @@ class Issues extends Component {
   componentDidMount() {
     this.getIssues()
       .then(res => {
-        debugger;
         this.setState({issues: res.issues});
       })
       .catch(function(err){
-        debugger;
         console.log('Cannot retrieve issues data.')
       })
   }  

@@ -5,7 +5,7 @@ import Topic from "../common/Topic";
 import AllIssues from "../common/AllIssues";
 import axios from 'axios';
 
-class MyMP extends Component {
+class MyMp extends Component {
   
   constructor(props) {
     super(props);
@@ -51,4 +51,4 @@ class MyMP extends Component {
   }
 }
 
-export default MyMP;
+export default MyMp;
