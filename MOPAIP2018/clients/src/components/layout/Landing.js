@@ -23,7 +23,7 @@ class Landing extends Component {
   render() {
     const SubmitButton = withRouter(({ history }) => (
       <button
-        onClick={() => history.push(`myMp/${this.state.postcode}`)} 
+        onClick={() => history.push(`myMp/postcode/${this.state.postcode}`)} 
         className='btn btn-lg btn-primary' type="submit" > Go
       </button>
     ));

@@ -1,13 +1,22 @@
 import React from "react";
-import face from '../../img/face.jpg'
+import { Link } from "react-router-dom";
+
+const mpFaces = require.context('../../img/reps', true);
 
 export default (props) => {
   return (
-  	<div>
-  		<a href="#">
-  			<img className="mp-face clickable-area img-fluid" src={face} />
-  		</a>
-  		<p className='text-center ml-1'>{props.info.name}</p>
+  	<div className="mp-info-container">
+  		<Link to={props.link}>
+        <img className="mp-face clickable-area img-fluid" src={mpFaces(`./${props.info._id}.png`)} />
+	    </Link>
+  		<div className='text-center'>
+  			<div>
+	  			<span>{props.info.firstName} {props.info.lastName}</span>
+  			</div>
+  			<div>
+	  			<span>{props.info.party}</span>
+  			</div>
+  		</div>
     </div>
   );
 };

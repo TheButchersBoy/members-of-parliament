@@ -16,9 +16,9 @@ class AllIssues extends Component {
         if (this.props.mpData) {
           if (this.mpHasVote(issue)) {
             issues.push(
-              <div key={issue.id} className='row'>
+              <div key={issue._id} className='row'>
                 <div className="col-sm-9 text-left">
-                  <Link to={`/issues/${key}/${issue.id}/${issue.title}`} className="topic-button">{issue.title}</Link>
+                  <Link to={`/issues/${key}/${issue._id}`} className="topic-button">{issue.title}</Link>
                 </div>
                 <div className="col-sm-3 text-left">
                   {this.renderMpVote(issue)}
@@ -28,9 +28,9 @@ class AllIssues extends Component {
           }
         } else {
           issues.push(
-            <div key={issue.id} className='row'>
+            <div key={issue._id} className='row'>
               <div className="col-sm-9 text-left">
-                <Link to={`/issues/${key}/${issue.id}/${issue.title}`} className="topic-button">{issue.title}</Link>
+                <Link to={`/issues/${key}/${issue._id}`} className="topic-button">{issue.title}</Link>
               </div>
               <div className="col-sm-3 text-left">
                 {this.renderIssueStatus(issue)}
@@ -39,21 +39,23 @@ class AllIssues extends Component {
           )
         }
       });
-      topics.push(
-        <Topic key={key} title={key} className="col-lg-4 col-md-6">
-          {issues}
-        </Topic>
-      );
+      if (issues.length > 0) {
+        topics.push(
+          <Topic key={key} title={key} className="col-lg-4 col-md-6">
+            {issues}
+          </Topic>
+        );
+      }
     }
     return topics;
   }
 
   mpHasVote(issue) {
-    return issue.votesFor.includes(issue.id) || issue.votesAgainst.includes(issue.id);
+    return issue.votesFor.includes(this.props.mpData._id) || issue.votesAgainst.includes(this.props.mpData._id);
   }
 
   renderMpVote(issue) {
-    return issue.votesFor.includes(this.props.mpData.id) 
+    return issue.votesFor.includes(this.props.mpData._id) 
       ? <p style={{fontWeight: 'bold', color: 'green'}}>for</p>
       : <p style={{fontWeight: 'bold', color: 'red'}}>against</p>
   }

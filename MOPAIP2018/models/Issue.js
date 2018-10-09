@@ -3,14 +3,6 @@ const Schema = mongoose.Schema;
 
 // Create Schema
 const IssueSchema = new Schema({
-  id: {
-    type: Number,
-    required: true
-  },
-  topic: {
-    type: String,
-    required: true
-  }
   title: {
     type: String,
     required: true
@@ -19,26 +11,20 @@ const IssueSchema = new Schema({
     type: String,
     required: true
   },  
+  topic: {
+    type: String,
+    required: true
+  },
   billUrl: {
     type: String,
     required: true
   },
-  votesFor: [
-    {
-      mpId: {
-        type: Number,
-        required: true
-      }
-    }
-  ],
-  votesAgainst: [
-    {
-      mpId: {
-        type: Number,
-        required: true
-      }
-    }
-  ]
+  votesFor: [],
+  votesAgainst: [],
+  date: {
+    type: Date,
+    default: Date.now
+  }
 });
 
-module.exports = User = mongoose.model('issue', IssueSchema);
+module.exports = Issue = mongoose.model('issue', IssueSchema);

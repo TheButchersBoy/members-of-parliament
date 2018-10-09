@@ -21,6 +21,7 @@ class Navbar extends Component {
   render() {
     const { isAuthenticated, user } = this.props.auth;
 
+    // TODO: Add back in if working properly
     const postcodeSearch = (
       <li className="nav-item">
         <Link to="/">
@@ -33,7 +34,6 @@ class Navbar extends Component {
 
     const authLinks = (
       <ul className="navbar-nav ml-auto">
-        {postcodeSearch}
         <li className="nav-item">
           <Link className="nav-link" to="/feed">
             Discussion Forum
@@ -65,7 +65,6 @@ class Navbar extends Component {
 
     const guestLinks = (
       <ul className="navbar-nav ml-auto">
-        {postcodeSearch}
         <li className="nav-item">
           <Link className="nav-link" to="/register">
             Sign Up

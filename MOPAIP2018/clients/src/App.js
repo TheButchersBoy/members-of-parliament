@@ -52,10 +52,11 @@ class App extends Component {
             <div className="container">
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
-              <Route exact path="/myMP/:postcode" component={MyMp} />
+              <Route exact path="/myMP/:mpId" component={MyMp} />
+              <Route exact path="/myMP/postcode/:postcode" component={MyMp} />
               <Route exact path="/mps" component={Mps} />
               <Route exact path="/issues" component={Issues} />
-              <Route exact path="/issues/:topic/:issueId/:issueTitle" component={Issue} />
+              <Route exact path="/issues/:topic/:issueId" component={Issue} />
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </Switch>

@@ -1,155 +1,57 @@
 const express = require("express");
 const router = express.Router();
 
+const Mp = require('../../models/Mp');
+
+// router.post('/postIssue', (req, res) => {
+//   console.log("POST ISSUE!");
+//   console.log(req);
+//   const newIssue = new Issue({
+//     title: req.body.title,
+//     description: req.body.description,
+//     topic: req.body.topic,
+//     billUrl: req.body.billUrl,
+//     votesFor: req.body.votesFor,
+//     votesAgainst: req.body.votesAgainst,
+//   });
+
+//   newIssue.save().then(issue => res.json(issue));
+// });
 
 // @route   GET api/mp/mps
 // @desc    Return all mps
 // @access  Public
 //router.get('/mps', (req, res) => {
 router.get('/mps', (req, res) => {
-
-  console.log('ininin');
-
-  // Mock data
-  const mps = [
-    {
-      id: 0,
-      name: 'Tony',
-      party: 'Liberal'
-    },
-    {
-      id: 1,
-      name: 'Tony',
-      party: 'Labour'
-    },
-    {
-      id: 2,
-      name: 'Tony',
-      party: 'Labour'
-    },
-    {
-      id: 3,
-      name: 'Tony',
-      party: 'Liberal'
-    },
-    {
-      id: 4,
-      name: 'Tony',
-      party: 'Labour'
-    },
-    {
-      id: 5,
-      name: 'Tony',
-      party: 'Liberal'
-    },
-    {
-      id: 6,
-      name: 'Tony',
-      party: 'Liberal'
-    },
-    {
-      id: 7,
-      name: 'Tony',
-      party: 'Liberal'
-    },
-    {
-      id: 8,
-      name: 'Tony',
-      party: 'Liberal'
-    },
-    {
-      id: 9,
-      name: 'Tony',
-      party: 'Labour'
-    }
-  ]; 
-
-  res.send({mps});
+  Mp.find()
+    .then(mps => res.json(mps))
+    .catch(err =>
+      res.status(404).json({ nompsfound: 'No mps found' })
+    );
 });
 
-
-// @route   GET api/users/test
-// @desc    Tests users route
+// @route   GET api/mp/mp/:id
+// @desc    Return an mp with a matching ID
 // @access  Public
-//router.get('/getData/:postcode', (req, res) => {
-router.get('/getData', (req, res) => {
-  const postcode = req.query.postcode;
-  var issues = {};
+router.get('/mp/:id', (req, res) => {
+  Mp.findById(req.params.id)
+    .then(mp => res.json(mp))
+    .catch(err =>
+      res.status(404).json({ nompfound: 'No mp found with that ID' })
+    );
+});
 
-  // TODO
-  // 1. get mp data from MP table based on Postcode
-  // 2. get topics data from Topic table
-  // 3. filter issues, construct based on topic sorted by most issues.
-  // 3. return
-
-
-  const mpData = {
-    id: 0,
-    name: 'Tony',
-    party: 'Liberal'
-  }  
-
-  const issueData = [
-    {
-      id: 0,
-      topic: 'IT',
-      title: 'Restricting consumer use of 3D printers',
-      description: 'blah blah blah',
-      votesFor: [
-        0,
-        2,
-        4
-      ],
-      votesAgainst: [
-        1,
-        3,
-        5
-      ],
-    },
-    {
-      id: 1,
-      topic: 'Health',
-      title: 'Some issue about health',
-      description: 'blah blah blah',
-      votesFor: [
-        1,
-        3,
-        5
-      ],
-      votesAgainst: [
-        0,
-        2,
-        4
-      ],
-    },
-    {
-      id: 2,
-      topic: 'IT',
-      title: 'Banning library computers',
-      description: 'blah blah blah',
-      votesFor: [
-        0,
-        2,
-        4
-      ],
-      votesAgainst: [
-        1,
-        3,
-        5
-      ],
-    },
-  ]
-
-  // Sort issues into topics
-  for (let i = 0; i < issueData.length; i++) {
-    let issue = issueData[i];
-    if (!issues[issue.topic]) {
-      issues[issue.topic] = [];
-    }
-    issues[issue.topic].push(issue);
-  }
-
-  res.send({mpData, issues});
+// @route   GET api/mp/mp/postcode/:postcode
+// @desc    Return an mp with a matching Postcode
+// @access  Public
+router.get('/mp/postcode/:postcode', (req, res) => {
+  // TODO: Get corresponding postcode. If data dump doesn't work let's just add a few ourselves and only search for those MPs
+  
+  // Mp.findById(req.params.postcode)
+  //   .then(mp => res.json(mp))
+  //   .catch(err =>
+  //     res.status(404).json({ nompfound: 'No mp found with that Postcode' })
+  //   );
 });
 
 module.exports = router;

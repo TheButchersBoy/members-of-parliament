@@ -13,25 +13,24 @@ class Mps extends Component {
   componentDidMount() {
     this.getMps()
       .then(res => {
-        this.setState({mps: res.mps});
+        this.setState({mps: res});
       })
       .catch(function(err){
-        debugger;
-        console.log('Cannot retrieve issues data.')
+        console.log('Cannot retrieve MP data.')
       })
   }  
 
   getMps = async () => {
-    const response = await fetch('api/mp/mps');
+    const response = await fetch('/api/mp/mps');
     return await response.json();
-  };
+  };  
 
   renderMps() {
     var mps = [];
     for(var key in this.state.mps) {
       mps.push(
         <div key={key} className="col-md-2 col-sm-3 col-4">
-          <MpInfo info={this.state.mps[key]} />
+          <MpInfo info={this.state.mps[key]} link={`/myMp/${this.state.mps[key]._id}`} />
         </div>
       );
     }
@@ -42,7 +41,7 @@ class Mps extends Component {
     return (
       <div className="row">
         {this.state.mps ?
-            this.renderMps()
+          this.renderMps()
         : null}
       </div>
     );

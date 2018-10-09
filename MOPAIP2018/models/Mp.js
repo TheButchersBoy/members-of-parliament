@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 
 // Create Schema
 const MpSchema = new Schema({
-  id: {
-    type: int,
+  firstName: {
+    type: String,
     required: true
-  },
-  name: {
+  },  
+  lastName: {
     type: String,
     required: true
   },
@@ -17,4 +17,4 @@ const MpSchema = new Schema({
   }
 });
 
-module.exports = User = mongoose.model('mp', MpSchema);
+module.exports = Mp = mongoose.model('mp', MpSchema);
