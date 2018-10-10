@@ -8,7 +8,8 @@
     "start": "node server.js",
     "server": "nodemon server.js",
     "clients": "npm start --prefix clients",
-    "dev": "concurrently \"npm run server\" \"npm run clients\""
+    "dev": "concurrently \"npm run server\" \"npm run clients\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix clients && npm run build --prefix clients"
   },
   "author": "Shadman,Nathan,Angelica",
   "license": "MIT",
