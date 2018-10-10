@@ -1,19 +1,31 @@
 {
-  "name": "members-of-parliament",
-  "version": "0.0.1",
-  "private": true,
-  "dependencies": {
-    "react": "^16.4.2",
-    "react-bootstrap": "^0.32.3",
-    "react-dom": "^16.4.2",
-    "react-router": "^4.3.1",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.4"
-  },
+  "name": "mop",
+  "version": "1.0.0",
+  "description": "Information about Member Of Parliament",
+  "main": "server.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "clients-install": "npm install --prefix clients",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "clients": "npm start --prefix clients",
+    "dev": "concurrently \"npm run server\" \"npm run clients\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix clients && npm run build --prefix clients"
+  },
+  "author": "Shadman,Nathan,Angelica",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
+    "concurrently": "^3.5.1",
+    "express": "^4.16.3",
+    "gravatar": "^1.6.0",
+    "jsonwebtoken": "^8.2.0",
+    "mongoose": "^5.0.12",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "validator": "^9.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.3"
   }
 }
