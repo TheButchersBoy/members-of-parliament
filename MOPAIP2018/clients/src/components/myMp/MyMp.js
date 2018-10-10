@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import MpFace from "../common/MpFace";
 import Topic from "../common/Topic";
 import AllIssues from "../common/AllIssues";
+import Spinner from "../common/Spinner";
 import axios from 'axios';
 
 class MyMp extends Component {
@@ -63,7 +64,7 @@ class MyMp extends Component {
               <AllIssues issues={this.state.issues} mpData={this.state.mpData}/>
             </div>
           </div>
-        : null }  
+        : <Spinner /> }  
       </div>
     );
   }

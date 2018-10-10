@@ -25,7 +25,7 @@ class Navbar extends Component {
     const postcodeSearch = (
       <li className="nav-item">
         <Link to="/">
-          <form class="input-group">
+          <form className="input-group">
             <input onChange={this.onPostcodeChange} value={this.state.postcode} className="form-control" placeholder='**Finish this**' type="text" />
           </form>
         </Link>

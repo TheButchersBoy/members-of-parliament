@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import AllIssues from "../common/AllIssues";
+import Spinner from "../common/Spinner";
 
 class Issues extends Component {
 
@@ -34,7 +35,7 @@ class Issues extends Component {
               <AllIssues issues={this.state.issues}/>
             </div>
           </div>
-        : null}
+        : <Spinner />}
       </div>
     );
   }

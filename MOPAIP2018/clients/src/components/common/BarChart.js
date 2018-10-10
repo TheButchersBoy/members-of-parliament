@@ -26,7 +26,7 @@ class BarChart extends Component {
   	      data={data}
   	      width={50}
   	      height={300}
-          legend={false}
+          legend={{}}
   	      options={{
   	        maintainAspectRatio: false
   	      }}

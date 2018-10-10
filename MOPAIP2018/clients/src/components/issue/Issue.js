@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import BarChart from "../common/BarChart";
 import MpInfo from "../common/MpInfo";
+import Spinner from "../common/Spinner";
 import axios from 'axios';
 import ReactDOM from 'react-dom';
 import {
@@ -166,10 +167,10 @@ class Issues extends Component {
                     </AccordionItemBody>
                   </AccordionItem>
                 </Accordion>
-              : null }
+              : <Spinner /> }
             </div>
           </div>
-        : null }
+        : <Spinner /> }
       </div>
     );
   }

@@ -43,8 +43,8 @@ class Landing extends Component {
               </div>
             </div>
             <form className='col-md-8 offset-md-2'>
-              <div class="input-group">
-                <input onChange={this.onChange} value={this.state.postcode} className="form-control form-control-lg" placeholder='Postcode' type="text" />
+              <div className="input-group">
+                <input onChange={this.onChange} value={this.state.postcode} className="form-control form-control-lg" placeholder='Postcode' type="number" />
                 <span className="input-group-btn">
                   <SubmitButton/>
                 </span>

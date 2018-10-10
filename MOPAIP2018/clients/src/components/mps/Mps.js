@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import MpInfo from "../common/MpInfo";
+import Spinner from "../common/Spinner";
 
 class Mps extends Component {
 
@@ -42,7 +43,7 @@ class Mps extends Component {
       <div className="row">
         {this.state.mps ?
           this.renderMps()
-        : null}
+        : <Spinner />}
       </div>
     );
   }
