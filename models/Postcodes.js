@@ -13,15 +13,11 @@ const PostcodesSchema = new Schema({
   },
   pcPop: {
     type: Number,
-    required: true
+    required: false
   },
   suburbTotal: {
     type: Number,
-    required: true
-  },
-  postcode: {
-    type: Number,
-    required: true
+    required: false
   },
   suburbs: {
     type: Array,
@@ -29,4 +25,4 @@ const PostcodesSchema = new Schema({
   }
 });
 
-module.exports = User = mongoose.model("postcodes", PostcodeSchema);
+module.exports = Postcodes = mongoose.model("postcodes", PostcodeSchema);
