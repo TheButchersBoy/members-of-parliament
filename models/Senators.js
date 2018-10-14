@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // Create Schema
-const SenatorSchema = new Schema({
+const SenatorsSchema = new Schema({
   positionID: {
     type: Number,
     required: true
