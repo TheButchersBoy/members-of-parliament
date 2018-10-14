@@ -29,4 +29,4 @@ const RepsSchema = new Schema({
   }
 });
 
-module.exports = Reps = mongoose.model("reps", MpSchema);
+module.exports = Reps = mongoose.model("reps", RepsSchema);

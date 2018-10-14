@@ -25,4 +25,4 @@ const PostcodesSchema = new Schema({
   }
 });
 
-module.exports = Postcodes = mongoose.model("postcodes", PostcodeSchema);
+module.exports = Postcodes = mongoose.model("postcodes", PostcodesSchema);

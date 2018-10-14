@@ -53,4 +53,4 @@ const SuburbsSchema = new Schema({
   }
 });
 
-module.exports = Suburbs = mongoose.model("suburbs", MpSchema);
+module.exports = Suburbs = mongoose.model("suburbs", SuburbsSchema);

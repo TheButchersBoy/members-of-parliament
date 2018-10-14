@@ -25,4 +25,4 @@ const SenatorsSchema = new Schema({
   }
 });
 
-module.exports = Senators = mongoose.model("senators", MpSchema);
+module.exports = Senators = mongoose.model("senators", SenatorsSchema);
