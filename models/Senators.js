@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 // Create Schema
 const SenatorsSchema = new Schema({
   positionID: {
-    type: Number,
+    type: Int32Array,
     required: true
   },
   firstName: {

@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 // Create Schema
 const SuburbsSchema = new Schema({
   suburbId: {
-    type: Number,
+    type: Int32Array,
     required: true
   },
   state: {
@@ -16,27 +16,27 @@ const SuburbsSchema = new Schema({
     required: true
   },
   suburbPopulation: {
-    type: Number,
+    type: Int32Array,
     required: false
   },
   suburbTotal: {
-    type: Number,
+    type: Int32Array,
     required: false
   },
   suburbInstance: {
-    type: Number,
+    type: Int32Array,
     required: false
   },
   postcode: {
-    type: Number,
+    type: Int32Array,
     required: true
   },
   altPostcode: {
-    type: Number,
+    type: Int32Array,
     required: false
   },
   elecID1: {
-    type: Number,
+    type: Int32Array,
     required: true
   },
   electName1: {
@@ -44,7 +44,7 @@ const SuburbsSchema = new Schema({
     required: true
   },
   elecID2: {
-    type: Number,
+    type: Int32Array,
     required: false
   },
   electName2: {

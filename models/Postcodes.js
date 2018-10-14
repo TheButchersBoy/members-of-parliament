@@ -12,11 +12,11 @@ const PostcodesSchema = new Schema({
     required: true
   },
   pcPop: {
-    type: Number,
+    type: Int32Array,
     required: false
   },
   suburbTotal: {
-    type: Number,
+    type: Int32Array,
     required: false
   },
   suburbs: {
