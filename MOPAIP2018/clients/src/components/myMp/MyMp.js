@@ -7,10 +7,13 @@ import Spinner from "../common/Spinner";
 import axios from 'axios';
 
 class MyMp extends Component {
+
+  state = {
+    nompfound: false
+  }
   
   constructor(props) {
     super(props);
-    this.state = {};
   }
 
   componentDidMount() {
@@ -18,10 +21,13 @@ class MyMp extends Component {
       .then(res => {
         if (!res.nompfound) {
           this.setState({mpData: res});
+        } else {
+          this.setState({nompfound: true});
         }
       })
       .catch(function(err){
         console.log('Cannot retrieve MP data.')
+        this.setState({nompfound: true});
       })
 
     this.getIssues()
@@ -54,17 +60,24 @@ class MyMp extends Component {
   render() {
     return (
       <div className="row">
-        {this.state.mpData && this.state.issues ?
-          <div className="col-md-12 text-center">
-            <MpFace id={this.state.mpData._id}/>
-            <h3>{this.state.mpData.firstName} {this.state.mpData.lastName}</h3>
-            <p>Party: {this.state.mpData.party}</p>
-            <br />
-            <div className="container-fluid bg-3 text-center">    
-              <AllIssues issues={this.state.issues} mpData={this.state.mpData}/>
+        {this.state.mpData && this.state.issues 
+          ?
+            <div className="col-md-12 text-center">
+              <MpFace id={this.state.mpData._id}/>
+              <h3>{this.state.mpData.firstName} {this.state.mpData.lastName}</h3>
+              <p>Party: {this.state.mpData.party}</p>
+              <br />
+              <div className="container-fluid bg-3 text-center">    
+                <AllIssues issues={this.state.issues} mpData={this.state.mpData}/>
+              </div>
             </div>
+          : 
+          <div>
+            {!this.state.nompfound 
+            ? <Spinner /> 
+            : <h3>No MP found for this postcode</h3>} 
           </div>
-        : <Spinner /> }  
+          } 
       </div>
     );
   }

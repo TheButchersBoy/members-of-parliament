@@ -19,16 +19,39 @@ router.get('/test', (req, res) => res.json({ msg: 'Posts Works' }));
 // @route   GET api/posts
 // @desc    Get posts
 // @access  Public
+/*
 router.get('/', (req, res) => {
   Post.find()
     .sort({ date: -1 })
     .then(posts => res.json(posts))
-    .catch(err => res.status(404).json({ nopostsfound: 'No posts found' }));
+    .catch(err => res.status(404).json({ nopostsfound: 'No posts found' })); 
 });
-
+*/
+router.get(
+  '/:id',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Post.findById(req.params.id)
+      .then(post => res.json(post))
+      .catch(err =>
+        res.status(404).json({ nopostfound: 'No post found with that ID' })
+      );
+  }
+);
+router.get(
+  '/',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Post.find()
+      .sort({ date: -1 })
+      .then(posts => res.json(posts))
+      .catch(err => res.status(404).json({ nopostsfound: 'No posts found' }));
+  }
+);
 // @route   GET api/posts/:id
 // @desc    Get post by id
 // @access  Public
+/*
 router.get('/:id', (req, res) => {
   Post.findById(req.params.id)
     .then(post => res.json(post))
@@ -36,7 +59,7 @@ router.get('/:id', (req, res) => {
       res.status(404).json({ nopostfound: 'No post found with that ID' })
     );
 });
-
+*/
 // @route   POST api/posts
 // @desc    Create post
 // @access  Private
