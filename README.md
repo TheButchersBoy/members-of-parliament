@@ -10,7 +10,7 @@ _Build_
 ```
 npm install
 
-*This must be performed in both root directory and /clients folder.
+*This must be performed in both root directory and ./clients folder.
 ```
 
 _Development_
@@ -50,7 +50,23 @@ npm run dev
 
 ## File structure
 ```
-./src/
+├── package.json
+├── server.js
+
+./clients/
+├── public
+│   ├── reps-vp.pdf
+│   └── temp.bmg
+├── src
+│   ├── Face
+│   │   ├── Face.js
+│   ├── Footer
+│   │   ├── Footer.js
+│   │   ├── styles.css
+│   ├── Navigation
+│   │   ├── Navigation.js
+
+./config/
 ├── assets
 │   ├── reps-vp.pdf
 │   └── temp.bmg
@@ -60,14 +76,39 @@ npm run dev
 │   ├── Footer
 │   │   ├── Footer.js
 │   │   ├── styles.css
-│   ├── Navigation
-│   │   ├── Navigation.js
-├── pages
-│   ├── postcode
-│   │   ├── Postcode.js
-│   ├── singleMP
-│   │   ├── singleMP.js
-│   │   ├── style.css
+
+./models/
+├── assets
+│   ├── reps-vp.pdf
+│   └── temp.bmg
+├── components
+│   ├── Face
+│   │   ├── Face.js
+│   ├── Footer
+│   │   ├── Footer.js
+│   │   ├── styles.css
+
+./routes/
+├── assets
+│   ├── reps-vp.pdf
+│   └── temp.bmg
+├── components
+│   ├── Face
+│   │   ├── Face.js
+│   ├── Footer
+│   │   ├── Footer.js
+│   │   ├── styles.css
+
+./validation/
+├── assets
+│   ├── reps-vp.pdf
+│   └── temp.bmg
+├── components
+│   ├── Face
+│   │   ├── Face.js
+│   ├── Footer
+│   │   ├── Footer.js
+│   │   ├── styles.css
 ```
 
 ## Team
