@@ -1,12 +1,9 @@
 import {
-  GET_ISSUES,
-  GET_ISSUE
+  GET_ISSUES
 } from "../actions/types";
 
 const initialState = {
   issues: [],
-  issue: {},
-  loading: false
 };
 
 export default function(state = initialState, action) {
@@ -15,12 +12,6 @@ export default function(state = initialState, action) {
       return {
         ...state,
         issues: action.payload,
-        loading: false
-      };
-    case GET_ISSUE:
-      return {
-        ...state,
-        issue: action.payload,
         loading: false
       };
     default:

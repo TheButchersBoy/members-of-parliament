@@ -1,8 +1,7 @@
 import axios from "axios";
 
 import {
-  GET_MPS,
-  GET_MP
+  GET_MPS
 } from "./types";
 
 // Get Mps

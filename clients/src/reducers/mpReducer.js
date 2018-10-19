@@ -1,12 +1,9 @@
 import {
-  GET_MPS,
-  GET_MP
+  GET_MPS
 } from "../actions/types";
 
 const initialState = {
   mps: [],
-  mp: {},
-  loading: false
 };
 
 export default function(state = initialState, action) {
@@ -15,12 +12,6 @@ export default function(state = initialState, action) {
       return {
         ...state,
         mps: action.payload,
-        loading: false
-      };
-    case GET_MP:
-      return {
-        ...state,
-        mp: action.payload,
         loading: false
       };
     default:
