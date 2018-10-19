@@ -4,7 +4,6 @@ import MpFace from "../common/MpFace";
 import Topic from "../common/Topic";
 import AllIssues from "../common/AllIssues";
 import Spinner from "../common/Spinner";
-import axios from 'axios';
 
 class MyMp extends Component {
   state = {
@@ -60,8 +59,7 @@ class MyMp extends Component {
     return (
       <div className="row">
         {this.state.mpData && this.state.issues 
-          ?
-            <div className="col-md-12 text-center">
+          ? <div className="col-md-12 text-center">
               <MpFace id={this.state.mpData._id}/>
               <h3>{this.state.mpData.firstName} {this.state.mpData.lastName}</h3>
               <p>Party: {this.state.mpData.party}</p>
@@ -70,13 +68,12 @@ class MyMp extends Component {
                 <AllIssues issues={this.state.issues} mpData={this.state.mpData}/>
               </div>
             </div>
-          : 
-          <div>
-            {!this.state.nompfound 
-            ? <Spinner /> 
-            : <h3>No MP found for this postcode</h3>} 
-          </div>
-          } 
+          : <div>
+              {!this.state.nompfound 
+              ? <Spinner /> 
+              : <h3>No MP found for this postcode</h3>} 
+            </div>
+        } 
       </div>
     );
   }

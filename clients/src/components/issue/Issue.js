@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import BarChart from "../common/BarChart";
 import MpInfo from "../common/MpInfo";
 import Spinner from "../common/Spinner";
-import axios from 'axios';
 import ReactDOM from 'react-dom';
 import {
     Accordion,
@@ -12,24 +11,6 @@ import {
     AccordionItemBody,
 } from 'react-accessible-accordion';
 import 'react-accessible-accordion/dist/fancy-example.css';
-
-// Dummy Data:
-
-// const postData = {
-//   title: 'Introduce Carbon Farming initiative',
-//   description: 'Amends the Carbon Credits (Carbon Farming Initiative) Act 2011 to: remove the obligation to obtain consent of eligible interest holders from existing area-based emissions-avoidance projects; clarify that state and territory government Crown lands ministers and Commonwealth ministers responsible for land rights legislation have consent rights for projects conducted on exclusive possession native title land that is Torrens system land or land rights land; provide for legislative rules or regulations to allow parts of a sequestration offsets project to be removed and credits surrendered for the carbon stored in that area.',
-//   topic: 'Agriculture',
-//   billUrl: 'https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r5833',
-//   votesFor: [
-//     '5bbcc24bea1458a3f6f81c69',
-//     '5bbcc16f167860a30f83dffe',
-//     '5bbcc0e41b97a1a29d6d0ab2',
-//     '5bbcbfb805e831a1ad83d42f'
-//   ],
-//   votesAgainst: [
-//     '5bbcc1fbafc840a38eb87e6f'
-//   ],
-// }
 
 class Issues extends Component {
 
@@ -53,10 +34,6 @@ class Issues extends Component {
       .catch(function(err){
         console.log('Cannot retrieve MPs.')
       })
-
-    // Function to post Dummy data to DB
-    
-    //this.postIssue();
   }  
 
   getMps = async () => {
@@ -68,21 +45,6 @@ class Issues extends Component {
     const response = await fetch(`/api/issues/issue/${this.props.match.params.issueId}`);
     return await response.json();
   };
-
-  // Function to post Dummy data to DB
-
-  // postIssue = () => {
-  //   axios
-  //     .post("/api/mp/postIssue", postData)
-  //     .then(res => {
-  //         debugger;
-  //       }
-  //     )
-  //     .catch(err => {
-  //         debugger;
-  //       }
-  //     );
-  // };
 
   renderMpsFor() {
     var mps = [];

@@ -4,9 +4,8 @@ const router = express.Router();
 const Issue = require('../../models/Issue');
 
 // @route   GET api/issues/issue/:id
-// @desc    Get issue data for a specific issue
+// @desc    Return issue data for a specific issue
 // @access  Public
-//router.get('issues/issue:id', (req, res) => {
 router.get('/issue/:id', (req, res) => {  
   Issue.findById(req.params.id)
     .then(issue => res.json(issue))
@@ -16,9 +15,8 @@ router.get('/issue/:id', (req, res) => {
 });
 
 // @route   GET api/issues/issues
-// @desc    Get all issue data
+// @desc    Return all issue data
 // @access  Public
-//router.get('issues/issues', (req, res) => {
 router.get('/issues', (req, res) => {
   Issue.find()
     .then(issuesRaw => {
@@ -31,7 +29,6 @@ router.get('/issues', (req, res) => {
         }
         issues[issue.topic].push(issue);
       }
-
       res.json(issues)
     })
     .catch(err => 

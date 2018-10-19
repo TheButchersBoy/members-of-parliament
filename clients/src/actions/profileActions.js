@@ -8,7 +8,6 @@ import {
 } from "./types";
 
 //Get current profile
-
 export const getCurrentProfile = () => dispatch => {
   dispatch(setProfileLoading());
   axios
@@ -28,12 +27,12 @@ export const getCurrentProfile = () => dispatch => {
 };
 
 //Profile Loading
-
 export const setProfileLoading = () => {
   return {
     type: PROFILE_LOADING
   };
 };
+
 //Clear Profile
 export const clearCurrentProfile = () => {
   return {

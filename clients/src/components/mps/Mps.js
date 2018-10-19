@@ -1,37 +1,23 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import axios from 'axios';
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import MpInfo from "../common/MpInfo";
 import Spinner from "../common/Spinner";
+import { getMps } from "../../actions/mpActions";
 
 class Mps extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   componentDidMount() {
-    this.getMps()
-      .then(res => {
-        this.setState({mps: res});
-      })
-      .catch(function(err){
-        console.log('Cannot retrieve MP data.')
-      })
+    this.props.getMps();
   }  
-
-  getMps = async () => {
-    const response = await fetch('/api/mp/mps');
-    return await response.json();
-  };  
 
   renderMps() {
     var mps = [];
-    for(var key in this.state.mps) {
+    for(var key in this.props.mp.mps) {
       mps.push(
         <div key={key} className="col-md-2 col-sm-3 col-4">
-          <MpInfo info={this.state.mps[key]} link={`/myMp/${this.state.mps[key]._id}`} />
+          <MpInfo info={this.props.mp.mps[key]} link={`/myMp/${this.props.mp.mps[key]._id}`} />
         </div>
       );
     }
@@ -41,12 +27,24 @@ class Mps extends Component {
   render() {
     return (
       <div className="row">
-        {this.state.mps ?
-          this.renderMps()
-        : <Spinner />}
+        {this.props.mp.mps 
+          ? this.renderMps()
+          : <Spinner />}
       </div>
     );
   }
 }
 
-export default Mps;
+Mps.propTypes = {
+  getMps: PropTypes.func.isRequired,
+  mp: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  mp: state.mp
+});
+
+export default connect(
+  mapStateToProps,
+  { getMps }
+)(Mps);

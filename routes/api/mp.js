@@ -7,7 +7,6 @@ const Postcode = require('../../models/Postcode');
 // @route   GET api/mp/mps
 // @desc    Return all mps
 // @access  Public
-//router.get('/mps', (req, res) => {
 router.get('/mps', (req, res) => {
   Mp.find()
     .then(mps => res.json(mps))

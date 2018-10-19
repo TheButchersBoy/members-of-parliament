@@ -7,14 +7,13 @@ import {
 
 // Get Mps
 export const getMps = () => dispatch => {
-  //dispatch(setPostLoading());
   axios
-    .get("/api/mps")
-    .then(res =>
+    .get("/api/mp/mps")
+    .then(res => {
       dispatch({
         type: GET_MPS,
         payload: res.data
-      })
+      })}
     )
     .catch(err =>
       dispatch({
@@ -24,21 +23,3 @@ export const getMps = () => dispatch => {
     );
 };
 
-// Get Mp
-export const getMp = id => dispatch => {
-  //dispatch(setPostLoading());
-  axios
-    .get(`/api/mp/${id}`)
-    .then(res =>
-      dispatch({
-        type: GET_MP,
-        payload: res.data
-      })
-    )
-    .catch(err =>
-      dispatch({
-        type: GET_MP,
-        payload: null
-      })
-    );
-};
