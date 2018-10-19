@@ -13,7 +13,7 @@ npm install
 cd /clients
 npm install
 
-*This must be performed in both root directory and ./clients folder.
+*Build must be performed in both root directory and ./clients folder.
 ```
 
 _Development_
@@ -21,7 +21,7 @@ _Development_
 ```
 npm run dev
 
-*Refer to "develop" branch as final production product."
+*Refer to "develop" branch as final production product.
 
 ```
 
