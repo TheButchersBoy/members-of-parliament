@@ -10,6 +10,9 @@ _Build_
 ```
 npm install
 
+cd /clients
+npm install
+
 *This must be performed in both root directory and ./clients folder.
 ```
 
@@ -18,97 +21,78 @@ _Development_
 ```
 npm run dev
 
+*Refer to "develop" branch as final production product."
+
 ```
 
 ## Design
-
-1.First we made designs on a paper on how our front end would look like.
-2.We then divided the layout into grids so we can structure the layout of the different sections.
-3.We plan to use a homepage slideshow.
-4.THe website should be mobile and tablet friendly.
-5.We plan to organizie the data in a way that clients can peform search on the data
+Html, Css, React, Redux
+- Website is both mobile and tablet friendly.
+- We utilised boostrap for our css.
 
 ## Database
+Node, Express
 
-1. Identify the objects that would be used together and combine them in one collection.
-2. Separate data that can be referred to from multiple places into its own collection.
-3. Reference only when there are many to many relationships
-4. Child data would only have one to one relationship with parent.
-5. We plan to avoid deepnesting in mongo rows/documents
-6. Every document should be designed to be atomic.
-
-## Coding
-
-1. We plan to use descriptive variable names and comments
-2. Every function or component should have only one purpose.
-3. Prevent dependecy injection by letting user only interact with the public areas of the website and prevet from entering data to the website
-4. We plan to make a consistent identation.
-5. We plan to avoid long lines of code.
-6. Use verbs for function names and nouns for classes and attributes
-7. Perform testing on components.
-8. Account for eror handling.
+- Our databse is currently held with mlab.
+- Database authentication is currently bound to node requests.
 
 ## File structure
 ```
 ├── package.json
 ├── server.js
 
-./clients/
+/clients/
 ├── public
-│   ├── reps-vp.pdf
-│   └── temp.bmg
+│   ├── favicon.io
+│   ├── index.html
+│   └── manifest.json
 ├── src
-│   ├── Face
-│   │   ├── Face.js
-│   ├── Footer
-│   │   ├── Footer.js
-│   │   ├── styles.css
-│   ├── Navigation
-│   │   ├── Navigation.js
+│   ├── actions
+│   ├── components
+│   ├── img
+│   ├── reducers
+│   ├── utils
+│   ├── validation
+│   ├── App.css
+│   ├── App.js
+│   ├── Index.css
+│   ├── Index.js
+│   ├── store.js
+├── package.json
 
-./config/
-├── assets
-│   ├── reps-vp.pdf
-│   └── temp.bmg
-├── components
-│   ├── Face
-│   │   ├── Face.js
-│   ├── Footer
-│   │   ├── Footer.js
-│   │   ├── styles.css
+/config/
+├── keys.js
+├── keys_dev.js
+├── keys_prod.js
+├── passport.js
 
-./models/
-├── assets
-│   ├── reps-vp.pdf
-│   └── temp.bmg
-├── components
-│   ├── Face
-│   │   ├── Face.js
-│   ├── Footer
-│   │   ├── Footer.js
-│   │   ├── styles.css
+/models/
+├── Electorates.js
+├── Issue.js
+├── Mp.js
+├── Post.js
+├── Postcode.js
+├── Postcodes.js
+├── Profile.js
+├── Reos.js
+├── Senators.js
+├── Suburbs.js
+├── User.js
 
-./routes/
-├── assets
-│   ├── reps-vp.pdf
-│   └── temp.bmg
-├── components
-│   ├── Face
-│   │   ├── Face.js
-│   ├── Footer
-│   │   ├── Footer.js
-│   │   ├── styles.css
+/routes/
+├── api
+│   ├── issues.js
+│   ├── mp.js
+│   ├── posts.js
+│   └── users.js
 
-./validation/
-├── assets
-│   ├── reps-vp.pdf
-│   └── temp.bmg
-├── components
-│   ├── Face
-│   │   ├── Face.js
-│   ├── Footer
-│   │   ├── Footer.js
-│   │   ├── styles.css
+/validation/
+├── is-empty.js
+├── login.js
+├── post.js
+├── profile.js
+├── register.js
+
 ```
 
 ## Team
